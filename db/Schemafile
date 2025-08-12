@@ -1,0 +1,5 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Pathname.glob("db/schemas/*.schema").each do |path|
+  require "schemas/#{path.basename}"
+end 

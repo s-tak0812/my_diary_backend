@@ -37,3 +37,11 @@ exec_app:
 
 console:
 	docker-compose run --rm app bin/rails c
+
+routes:
+	docker-compose run --rm app bin/rails routes
+
+space := $(empty) $(empty)
+
+route:
+	docker-compose run --rm app bin/rails routes | grep -E "$(subst $(space),|,$(strip $(filter-out $@,$(MAKECMDGOALS))))"
